@@ -1,0 +1,19 @@
+- hosts: webservers
+  tasks:
+  - name: Stop the running container
+    command: docker stop customcontainer
+    ignore_errors: True
+    
+  - name: Remove the running container
+    command: docker rm customcontainer
+    ignore_errors: True    
+    
+  - name: Remove the running image
+    command: docker rmi customimage
+    ignore_errors: True
+    
+  - name : Create an image from docker file
+    command: docker build -t customimage .
+    
+  - name : Create and run container
+    command: docker run -d -p 8080:8080 --name customcontainer customimage

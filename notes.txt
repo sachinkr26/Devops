@@ -1,0 +1,27 @@
+- To get to root user : sudo su - 
+   Need this to install stuff 
+
+- To edit a file : vim "fileName"
+
+
+- Remove all containers and after all images to win some space !
+$ docker rm $(docker ps -all -q)
+$ docker rmi $(docker image ls -q)
+
+- To check all the ports on linux : sudo netstat -tulpn
+
+- Installing a software need to be done in root, so a root user to give an user its permissions use this:  usermod -aG docker ec2-user
+
+
+- To start a container : 
+   sudo docker run -d -p 8080:8080 --name tomcat-container 2ae23eb477aa
+   -d means running in detached mode (in the background)
+   - 8080 (container starting port): 8080 (port of the machine that container is running on), 
+     its called mappping the container port to the hosting server port and needed for access 
+
+- To get into docker container server : 
+   docker exec -it <Container ID or Name> /bin/bash
+
+
+
+
